@@ -1,0 +1,16 @@
+       
+    <div *ngIf="userUno.length > 0; else noUsers "> 
+       <div class="container" *ngFor="let user of userUno; let i = index">
+            <div class="card" [ngClass]="user.role == 'cat' ? 'rosso' : user.role == 'staff' ? 'blue' : 'green'">
+                <p>{{i}}</p>
+                <img src="{{user.profilePhotoUrl}}">
+                <p>{{user.age}}</p>
+                <p>{{user.address.city}}</p>
+                <button (click)="delete(user.id)">Delete</button>
+            </div>
+        </div>
+    </div>
+
+<ng-template #noUsers>
+    <p>Non è presente nessun Utente</p>
+</ng-template>
